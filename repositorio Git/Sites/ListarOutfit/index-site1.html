@@ -1,0 +1,213 @@
+<!--Samuel e Vincius 2°D-->
+<!DOCTYPE html>
+<html data-bs-theme="light" lang="pt-br" dir="ltr">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Lista de outfit</title>
+    
+    <meta name="msapplication-TileImage" content="assets/img/favicons/mstile-150x150.png">
+    <meta name="theme-color" content="#ffffff">
+
+    <link rel="stylesheet" href="vendors/swiper/swiper-bundle.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&amp;family=Rubik:ital,wght@0,300..900;1,300..900family=Rubik:ital,wght@0,300..900;1,300..900&amp;display=swap" rel="stylesheet">
+    <link href="assets/css/theme.min.css" rel="stylesheet" id="style-default">
+    <link href="assets/css/user-rtl.min.css" rel="stylesheet" id="user-style-rtl">
+    <link href="assets/css/user.min.css" rel="stylesheet" id="user-style-default">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+  </head>
+
+  <body>
+    <!-- conteudo -->
+    <main class="main" id="top">
+      <div class="content">
+
+        <!--navbar-->
+        <nav class="navbar navbar-expand-md fixed-top" id="navbar" data-navbar-soft-on-scroll="data-navbar-soft-on-scroll">
+
+          <div class="container-fluid px-0"><a href="/"><img class="navbar-brand w-75 d-md-none" src="assets/img/simbolo.png" height = "90px" alt="logo" /></a><a class="navbar-brand fw-bold d-none d-md-block" href="/">SV - outfits</a>
+          
+         
+          <button class="navbar-toggler border-0 pe-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse justify-content-md-end" id="navbar-content" data-navbar-collapse="data-navbar-collapse">
+              <ul class="navbar-nav gap-md-2 gap-lg-3 pt-x1 pb-1 pt-md-0 pb-md-0" data-navbar-nav="data-navbar-nav">
+              </ul>
+            </div>
+          </div>
+        </nav>
+
+        <!--header-->
+        <div data-bs-target="#navbar" data-bs-spy="scroll" tabindex="0">
+          <section class="hero-section overflow-hidden position-relative z-0 mb-4 mb-lg-0" id="home">
+            <div class="hero-background">
+              <div class="container">
+                <div class="row gy-4 gy-md-8 pt-9 pt-lg-0">
+                  <div class="col-lg-6 text-center text-lg-start">
+                    <h1 class="fs-2 fs-lg-1 text-white fw-bold mb-2 mb-lg-x1 lh-base mt-3 mt-lg-0"> Monte seu <span class="text-nowrap">outfit</span></h1>
+
+                    <p class="fs-8 text-white mb-3 mb-lg-4 lh-lg">Coloque as peças de roupa que deseja na lista, e, clique no botão para gerar um outfit único!
+                    </p>
+                    <div class="d-flex justify-content-center justify-content-lg-start"><a class="btn btn-primary btn-lg lh-xl mb-4 mb-md-5 mb-lg-7" href="#area-lista">Começar</a></div>
+
+                    
+                  </div>
+                  <div class="col-lg-6 position-lg-relative">
+                    <div class="position-lg-absolute z-1 text-center"><img class="img-fluid chat-image" src="assets/img/bape.png" alt="" />
+                      <div class="position-absolute dots d-none d-md-block"> <img class="img-fluid w-50 w-lg-75" src="assets/img/illustrations/Dots.webp" alt="" /></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="position-absolute bottom-0 start-0 end-0 z-1"><img class="wave mb-md-n2" src="assets/img/illustrations/Wave.svg" alt="" />
+              <div class="bg-white py-2 py-md-5"></div>
+            </div>
+            
+          </section>
+
+          <!--area das listas-->
+        <section class="container border-bottom mb-8 mb-lg-10" id = "area-lista">
+          <div class="row pb-6 pb-lg-8 g-3 g-lg-8 px-3">
+            <div class="col-12 col-md-4">
+              <!--lista 1-->
+              <h2>Lista de camisa(s)</h2>
+              <br>
+              <input type="text" id="inputItem1" placeholder="Adicione um item">
+              <button class="btn btn-primary" onclick="adicionarItem('inputItem1', 'listaCamisetas')">Add</button>
+              <!--ação adicionar item-->
+              <ul id="listaCamisetas">
+                <!-- Lista de tarefas será adicionada aqui -->
+              </ul>
+            </div>
+
+            <div class="col-12 col-md-4">
+              <!--lista 2-->
+              <h2>Lista de calça(s)</h2>
+              <br>
+              <input type="text" id="inputItem2" placeholder="Adicione um item">
+              <button class="btn btn-primary" onclick="adicionarItem('inputItem2', 'listaCalcas')">Add</button>
+              <!--ação adicionar item-->
+              <ul id="listaCalcas">
+                <!-- Lista de tarefas será adicionada aqui -->
+              </ul>
+            </div>
+
+            <div class="col-12 col-md-4">
+              <!--lista 3-->
+              <h2>Lista de tênis</h2>
+              <br>
+              <input type="text" id="inputItem3" placeholder="Adicione um item">
+              <button class="btn btn-primary" onclick="adicionarItem('inputItem3', 'listaTenis')">Add</button>
+              <!--ação adicionar item-->
+              <ul id="listaTenis">
+                <!-- Lista de tarefas será adicionada aqui -->
+              </ul>
+            </div>
+          </div>
+
+          <div class="d-flex justify-content-center mt-4">
+            <button class = "btn btn-primary tam" onclick="escolherAleatorio()">Montar outfit aleatório</button>
+            <br>
+          </div>
+
+          <div class="row justify-content-center mt-4">
+            <div id="resultadoAleatorio">
+              <center>
+                <br>
+                <br>
+                <p id = "aleatorios"></p>
+                <!-- Resultado da escolha aleatória será exibido aqui -->
+              </center>
+            </div>
+          </div>
+        </section>
+
+        <footer class="pt-7 pt-lg-8">
+          <div class="container">
+            <div class="row gy-2 py-3 justify-content-center justify-content-md-between">
+              <div class="col-auto ps-0">
+                <p class="text-center text-md-start lh-xl text-1100"> © 2024 Copyright, Direitos reservados por <a class="fw-semi-bold" href="https://themewagon.com/">ThemeWagon </a>, Feito por Samuel e Vinicius 2°D</p>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </main>
+
+
+
+    <!--script-->
+
+    <script>
+      function adicionarItem(inputId, listaId) {
+        var input = document.getElementById(inputId);
+        var textoItem = input.value.trim();
+    
+        if (textoItem !== '') {
+          var lista = document.getElementById(listaId);
+          var novoItem = document.createElement('li');
+          novoItem.textContent = textoItem;
+    
+          var botaoRemover = document.createElement('button');
+          botaoRemover.textContent = '-';
+          botaoRemover.onclick = function() {
+            lista.removeChild(novoItem);
+          };
+    
+          novoItem.appendChild(botaoRemover);
+          lista.appendChild(novoItem);
+    
+          input.value = '';
+        } else {
+          alert('Por favor, insira um item válido.');
+        }
+      }
+    
+      function escolherAleatorio() {
+        // Obter as listas pelo ID
+        var listaCamisetas = document.getElementById('listaCamisetas');
+        var listaCalcas = document.getElementById('listaCalcas');
+        var listaTenis = document.getElementById('listaTenis');
+
+        // Obter os itens de cada lista
+        var itensCamisetas = listaCamisetas.getElementsByTagName('li');
+        var itensCalcas = listaCalcas.getElementsByTagName('li');
+        var itensTenis = listaTenis.getElementsByTagName('li');
+
+        // Verificar se todas as listas têm itens
+        if (itensCamisetas.length > 0 && itensCalcas.length > 0 && itensTenis.length > 0) {
+          // Selecionar um item aleatório de cada lista
+          var itemAleatorioCamisetas = itensCamisetas[Math.floor(Math.random() * itensCamisetas.length)].textContent.replace('Remover', '').trim();
+          var itemAleatorioCalcas = itensCalcas[Math.floor(Math.random() * itensCalcas.length)].textContent.replace('Remover', '').trim();
+          var itemAleatorioTenis = itensTenis[Math.floor(Math.random() * itensTenis.length)].textContent.replace('Remover', '').trim();
+
+          // Mostrar os itens aleatórios selecionados
+          document.getElementById('aleatorios').innerHTML = 
+            '<p class = "aleatorios"> <img src = "assets/img/camiseta.png" width = "35px"> ' + itemAleatorioCamisetas + '</p>' +
+            '<p class = "aleatorios"> <img src = "assets/img/calca.png" width = "35px"> ' + itemAleatorioCalcas + '</p>' +
+            '<p class = "aleatorios"> <img src = "assets/img/tenis.png" width = "35px"> ' + itemAleatorioTenis + '</p>';
+        } else {
+          // Alerta se alguma lista estiver vazia
+          alert('Preencha todas as listas.');
+        }
+      }
+  </script>
+
+    <script src="vendors/popper/popper.min.js"></script>
+    <script src="vendors/bootstrap/bootstrap.min.js"></script>
+    <script src="vendors/is/is.min.js"></script>
+    <script src="vendors/countup/countUp.umd.js"></script>
+    <script src="vendors/swiper/swiper-bundle.min.js"></script>
+    <script src="vendors/lodash/lodash.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
+    <script src="assets/js/theme.js"></script>
+  </body>
+
+</html>

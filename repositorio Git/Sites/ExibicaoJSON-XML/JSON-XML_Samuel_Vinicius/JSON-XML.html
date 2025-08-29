@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON e XML com localStorage</title>
+
+    <!--bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+</head>
+
+<style>
+    body {
+        background-color: rgb(226, 226, 226);
+    }
+
+    .primary-color {
+        color: #1E90FF;
+    }
+
+    .rodape {
+            color: black;
+    }
+
+    /* margem entre as seçoes */
+    .mb-0 {
+        margin-bottom: 0 !important;
+    }
+
+    .mt-0 {
+        margin-top: 0 !important;
+    }
+
+    .modal-custom {
+        margin-bottom: 0;
+    }
+
+    /* reduzir espaço entre as duas seções */
+    .modal-body, .modal-dialog {
+        padding: 10px;
+    }
+</style>
+
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center mb-4 fw-bold mb-0 fs-2 primary-color">JSON e XML com localStorage</h2>
+
+        <!--preencher informações-->
+        <div class="modal modal-sheet position-static d-block p-4 py-md-5 mb-0 modal-custom" tabindex="-1" role="dialog" id="modalSignin">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content rounded-4 shadow">
+                    <div class="modal-header p-5 pb-4 border-bottom-0">
+                        <h1 class="fw-bold mb-0 fs-2 primary-color">Preencha com as informações</h1>
+                    </div>
+        
+                    <div class="modal-body p-5 pt-0">
+
+                        <form id="formDados" class="row g-3">
+                            <center>
+                            <div class="col-md-10">
+                                <label for="nome" class="form-label">Nome:</label>
+                                <input type="text" id="nome" name="nome" class="form-control" required>
+                            </div>
+                            <div class="col-md-10">
+                                <label for="sobrenome" class="form-label">Sobrenome:</label>
+                                <input type="text" id="sobrenome" name="sobrenome" class="form-control" required>
+                            </div>
+                            <div class="col-md-10">
+                                <label for="idade" class="form-label">Idade:</label>
+                                <input type="number" id="idade" name="idade" class="form-control" required>
+                            </div>
+                            <div class="col-md-10">
+                                <label for="cidade" class="form-label">Cidade:</label>
+                                <input type="text" id="cidade" name="cidade" class="form-control" required>
+                            </div>
+                            <div class="col-md-10">
+                                <label for="estado" class="form-label">Estado:</label>
+                                <input type="text" id="estado" name="estado" class="form-control" required>
+                            </div>
+                            <div class="col-12 text-center mt-3">
+                                <button type="submit" class="btn btn-primary w-40">Adicionar Dados</button>
+                            </div>
+                        </center>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-4">
+                <button id="mostrarDadosJSON" class="btn btn-primary">Mostrar Dados em JSON</button>
+                <button id="mostrarDadosXML" class="btn btn-primary">Mostrar Dados em XML</button>
+            </div>
+        </div>
+
+        <!--resultado-->
+        <div class="modal modal-sheet position-static d-block p-2 py-md-3 mt-0 modal-custom" tabindex="-1" role="dialog" id="modalSignin">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content rounded-4 shadow">
+                    <div class="card-header text-center">
+                        <h5>Resultado</h5>
+                    </div>
+                    <div class="card-body">
+                        <pre id="resultado" class="bg-light p-3 border rounded"></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <center>
+    <footer class="pt-5 my-5 border-top">
+        <p class = "rodape" >Desenvolvido por Samuel e Vinicius, template Bootstrap; 2024</p>
+    </footer>
+    </center>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2x03zpcOLOCIyJoIeoYy6ga5IHGp8fZTlF0FN8EN5D1zR1S3p1n6ydzTROr" crossorigin="anonymous"></script>
+    
+    <!-- biblioteca xml-->
+    <script src="https://cdn.jsdelivr.net/npm/xml-js/dist/xml-js.min.js"></script>
+
+    <script>
+        localStorage.clear();
+        
+        //nomes variaveis
+        function adicionarDados(event) {
+            event.preventDefault();
+
+            const nome = document.getElementById('nome').value;
+            const sobrenome = document.getElementById('sobrenome').value;
+            const idade = document.getElementById('idade').value;
+            const cidade = document.getElementById('cidade').value;
+            const estado = document.getElementById('estado').value;
+            
+
+            const novosDados = {
+                nome: nome,
+                sobrenome: sobrenome,
+                idade: parseInt(idade),
+                cidade: cidade,
+                estado: estado
+            };
+
+            //biblioteca json
+            const dadosExistentes = JSON.parse(localStorage.getItem('dadosJSON')) || [];
+
+            dadosExistentes.push(novosDados);
+
+            //transformar em dadosJSON
+            localStorage.setItem('dadosJSON', JSON.stringify(dadosExistentes));
+
+            //resetar dados do forms
+            document.getElementById('formDados').reset();
+            
+            alert('dados adicionados com sucesso');
+        }
+
+        //funcao dados em json
+        function mostrarDadosJSON() {
+            const dados = localStorage.getItem('dadosJSON');
+            const resultado = document.getElementById('resultado');
+
+            resultado.textContent = dados ? JSON.stringify(JSON.parse(dados), null, 2) : 'nenhum dado encontrado';
+        }
+
+        //função dados em xml
+        function mostrarDadosXML() {
+            const dados = localStorage.getItem('dadosJSON');
+            const resultado = document.getElementById('resultado');
+
+            if (dados) {
+                const jsonObj = JSON.parse(dados);
+                const xml = js2xml(jsonObj, {compact: true, ignoreComment: true, spaces: 4});
+                resultado.textContent = xml; //biblioteca xml
+            } else {
+                resultado.textContent = 'nenhum dado encontrado';
+            }
+        }
+
+        document.getElementById('formDados').addEventListener('submit', adicionarDados);
+        document.getElementById('mostrarDadosJSON').addEventListener('click', mostrarDadosJSON);
+        document.getElementById('mostrarDadosXML').addEventListener('click', mostrarDadosXML);
+    </script>
+</body>
+</html>

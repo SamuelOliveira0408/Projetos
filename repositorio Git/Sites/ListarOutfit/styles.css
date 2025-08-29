@@ -1,0 +1,23 @@
+button {
+    background-color: #F74D4D;
+    border-radius: 20px;
+    color: white;
+    border-color: #F74D4D;
+}
+
+.tam {
+    height: 55px;
+    font-size: 25px;
+}
+
+.aleatorios {
+    font-size: 25px;
+}
+
+li {
+    font-size: 20px;
+}
+
+.titulo {
+    color: red;
+}

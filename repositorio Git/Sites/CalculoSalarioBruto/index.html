@@ -1,0 +1,285 @@
+<!doctype html>
+<html class="h-100" lang="pt-br">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+  <title>Calculo salário líquido</title>
+  <link rel="stylesheet" href="css/theme.min.css">
+  <link rel="stylesheet" href="styles.css">
+
+  <!--icone do site-->
+  <link rel="shortcut icon" type="imagex/png" href="money.png">
+
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> <!--biblioteca charts-->
+
+</head>
+
+<body class="bg-black text-white mt-0" data-bs-spy="scroll" data-bs-target="#navScroll">
+
+  <nav id="navScroll" class="navbar navbar-dark bg-black fixed-top px-vw-5" tabindex="0">
+    <div class="container">
+      <a class="navbar-brand pe-md-4 fs-4 col-12 col-md-auto text-center" href="index.html">
+      </a>
+
+      <ul class="navbar-nav mx-auto mb-2 mb-lg-0 list-group list-group-horizontal">
+        <li class="nav-item">
+          <a class="nav-link fs-5" href="index.html" aria-label="Homepage">
+            Home
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link fs-5" href="#formCalculo">
+            Calculadora
+          </a>
+        </li>
+
+      </ul>
+      
+    </div>
+  </nav>
+
+  <main> <!--header-->
+    <div class="w-100 overflow-hidden position-relative bg-black text-white" data-aos="fade">
+      <div class="position-absolute w-100 h-100 bg-black opacity-75 top-0 start-0"></div>
+
+      <div class="container py-vh-4 position-relative mt-5 px-vw-5 text-center">
+        <div class="row d-flex align-items-center justify-content-center py-vh-5">
+          <div class="col-12 col-xl-10">
+            <h1 class="display-huge mt-3 mb-3 lh-1">Calculadora de salário líquido</h1>
+          </div>
+          <div class="col-12 col-xl-8">
+            <p class="lead text-secondary">Calcule seu salário líquido através dos descontos para o INSS, imposto de renda e dependentes. </p>
+          </div>
+          <div class="col-12 text-center">
+            <a href="#formCalculo" class="btn btn-xl btn-light">Calcular
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-arrow-right" viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                  d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="bg-dark d-flex justify-content-center align-items-center" id = "formCalculo">
+      <div class="row d-flex justify-content-center">
+        <center>
+        <form id="formSalario"> <!--formulario salario-->
+          <br>
+          <h3>Carga horária mensal:</h3>
+          <input type="number" id="cargaH" style="border-radius: 25px; background-color: rgb(202, 200, 200);"><br><br>
+          <h3>Valor por hora:</h3>
+          <input type="number" id="valorH" style="border-radius: 25px; background-color: rgb(202, 200, 200);;"><br><br>
+          <h3>Quantidade de filhos:</h3>
+          <input type="number" id="filhos" style="border-radius: 25px; background-color: rgb(202, 200, 200);;"><br><br>
+          <button type="button" class="btn btn-xl btn-light" onclick="calculo()"> <a href="#resultados" class = "text-black"> Enviar </a> </button>
+          <br>
+          <br>
+
+        </form>
+        </center>
+      </div>
+  </div>
+
+  <div class="bg-black py-vh-3" id="resultados">
+    <div class="container bg-black px-vw-5 py-vh-3 rounded-5 shadow">
+      <div class="row gx-5 d-flex justify-content-center"> <!--classes bootstrap p centralizar-->
+        <div class="col-12 col-md-5">
+          <div class="card bg-transparent mb-12" data-aos="zoom-in-up">
+            <span class="h5 text-secondary fw-lighter">Tabela de distribuição do salário bruto</span>
+            <div class="bg-dark shadow rounded-5 p-0">
+              <div class="p-5">
+                <table class="table">
+                  <tr>
+                    <th>Descrição</th>
+                    <th>Valor</th>
+                  </tr>
+                  <tr>
+                    <td>Salário Bruto</td>
+                    <td id="res"></td>
+                  </tr>
+                  <tr>
+                    <td>INSS</td>
+                    <td id="inss"></td>
+                  </tr>
+                  <tr>
+                    <td>Desconto Filhos</td>
+                    <td id="filhosDesc"></td>
+                  </tr>
+                  <tr>
+                    <td>IRRF</td>
+                    <td id="irrf"></td>
+                  </tr>
+                  <tr>
+                    <td>Salário Líquido</td>
+                    <td id="sLiquido"></td>
+                  </tr>
+                </table>
+                <p id="erro"></p>
+              </div>
+            </div>
+          </div>
+          <br>
+        </div>
+        <div class="col-12 col-md-5">
+          <span class="h5 text-secondary fw-lighter">Gráfico de distribuição do salário bruto</span>
+          <div id="graficos" style="width: 500px; height: 500px;"></div>
+          <div class="p-5 pt-0 mb-5" data-aos="fade"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  </main>
+
+  <footer class="bg-black border-top border-dark">
+    <div class="container text-center small py-vh-2 border-top border-dark">feito por Samuel e Vinicius 2°D, template por
+      <a href="https://templatedeck.com" class="link-fancy link-fancy-light" target="_blank">templatedeck.com</a>
+      <a href="https://themewagon.com" class="link-fancy link-fancy-light" target="_blank">ThemeWagon</a>
+    </div>
+  </footer>
+
+
+  <!--scripts-->
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 800,
+    });
+  </script>
+
+  <script> // script da conta do salario 
+    // pacotes google chart
+    google.charts.load("current", {packages:["corechart"]});
+    google.charts.setOnLoadCallback(desenharGrafico);
+
+
+    function calculo() {
+  const valorHora = parseFloat(document.getElementById('valorH').value);
+  const cargaHoraria = parseFloat(document.getElementById('cargaH').value);
+  const qtdFilhos = parseFloat(document.getElementById('filhos').value);
+
+  // salario bruto
+  const sBruto = valorHora * cargaHoraria;
+  let res = `R$${sBruto.toFixed(2)}`;
+
+  // INSS
+  let inss = 0, restante = sBruto;
+  if (1412 > sBruto) {
+      inss = (sBruto * 7.5) / 100;
+      restante = sBruto - inss;
+  } else if (sBruto > 1412 && sBruto <= 2666.68) {
+      inss = (sBruto * 9) / 100 - 21.18;
+      restante = sBruto - inss;
+  } else if (sBruto >= 2666.69 && sBruto <= 4000.03) {
+      inss = (sBruto * 12) / 100 - 101.18;
+      restante = sBruto - inss;
+  } else if (sBruto >= 4000.04 && sBruto <= 7786.02) {
+      inss = (sBruto * 14) / 100 - 181.18;
+      restante = sBruto - inss;
+  } else if (sBruto > 7786.02) {
+      inss = 908.85;
+      restante = sBruto - inss;
+  }
+
+  document.getElementById('inss').innerHTML = `R$${inss.toFixed(2)}`;
+
+  const filhosDesc = qtdFilhos * 189.59; // desconto dos filhos
+  const resto = restante - filhosDesc;
+
+  document.getElementById('filhosDesc').innerHTML = `R$${filhosDesc.toFixed(2)}`;
+
+  // imposto de renda
+  let IRRF = 0, sLiquido = resto;
+  if (2259.20 > resto) {
+      IRRF = 0;
+      sLiquido = resto;
+  } else if (resto >= 2259.21 && 2826.65 >= resto) {
+      IRRF = resto * 0.075 - 169.44;
+      sLiquido = resto - IRRF;
+  } else if (resto >= 2826.66 && 3751.05 >= resto) {
+      IRRF = resto * 0.15 - 381.44;
+      sLiquido = resto - IRRF;
+  } else if (resto >= 3751.06 && 4664.68 >= resto) {
+      IRRF = resto * 0.225 - 662.77;
+      sLiquido = resto - IRRF;
+  } else if (resto > 4664.68) {
+      IRRF = resto * 0.275 - 896;
+      sLiquido = resto - IRRF;
+  }
+
+  let sFormatado = sLiquido.toFixed(2);
+
+  document.getElementById('irrf').innerHTML = `R$${IRRF.toFixed(2)}`;
+  document.getElementById('res').innerHTML = res;
+  document.getElementById('sLiquido').innerHTML = `R$${sFormatado}`;
+
+  desenharGrafico(parseFloat(inss.toFixed(2)), parseFloat(filhosDesc.toFixed(2)), parseFloat(IRRF.toFixed(2)), parseFloat(sLiquido.toFixed(2)));
+}
+    
+    function desenharGrafico(inss = 0, filhosDesc = 0, IRRF = 0, sLiquido = 0) {
+      const data = google.visualization.arrayToDataTable([
+          ['Categoria', 'Valor'],
+          ['INSS', inss],
+          ['Desconto Filhos', filhosDesc],
+          ['IRRF', IRRF],
+          ['Salário Líquido', sLiquido]
+      ]);
+
+      const options = {
+        is3D: true,
+        backgroundColor: '#111111',
+        chartArea: {
+            backgroundColor: '#111111',
+            width: '80%', 
+            height: '80%', 
+            
+        },
+        legend: {
+      
+            textStyle: {
+                color: 'white'
+            }
+        }
+    };
+
+    const grafico = new google.visualization.PieChart(document.getElementById('graficos'));
+    grafico.draw(data, options);
+
+
+    // mudar o tamanh do grafico qnd for responsivo
+    window.addEventListener('resize', resizeChart);
+
+    // redesenhar
+    resizeChart();
+
+  }
+  </script>
+
+  <script>
+    let scrollpos = window.scrollY;
+    const header = document.querySelector(".navbar");
+    const header_height = header.offsetHeight;
+
+    const add_class_on_scroll = () => header.classList.add("scrolled", "shadow-sm");
+    const remove_class_on_scroll = () => header.classList.remove("scrolled", "shadow-sm");
+
+    window.addEventListener('scroll', function () {
+      scrollpos = window.scrollY;
+
+      if (scrollpos >= header_height) { add_class_on_scroll(); }
+      else { remove_class_on_scroll(); }
+
+      console.log(scrollpos);
+    })
+  </script>
+
+</body>
+</html>

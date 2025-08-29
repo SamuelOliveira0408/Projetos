@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página 1 - Quiz Gênio</title>
+
+    <!--links do bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    
+    <!--icons do bootstrap-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+   
+    <!--link dos scripts-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
+    <link rel="shortcut icon" href="arvore.ico" type="image/x-icon">
+</head>
+<body>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        .escrita {
+            background: linear-gradient(90deg, #038b8b, #53A6A6, #038b8b);
+            background: linear-gradient(180deg, #038b8b, #53A6A6, #038b8b);
+        }
+
+        body {
+            background-color: #1B2526;
+        }
+
+        font{
+            color:white;
+        }
+
+        .botao{
+            border: solid 1px #53A6A6;
+            border-radius: 5px;
+            color: black;
+            background-color: #53A6A6;
+        }
+
+        .botao:hover{
+            background-color: #216363;
+        }
+
+        .nav {
+            text-align: left;
+            margin-top: 50px;
+            position: fixed;
+            bottom: 10px;
+            width: 100%;
+            margin-left: 30px;
+            font-size: 20px;
+        }
+
+        a {
+            color: white;
+            padding: 10px;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: gray;
+        }
+
+        .selecionado {
+            color: #53A6A6;
+        }
+
+        table {
+            margin-top: 30vh;
+        }
+
+        .rodape {
+            margin-top: 50px;
+            position: fixed;
+            bottom: 10px;
+            width: 100%;
+            font-size: 20px;
+            color: white;
+        }
+
+    </style>
+
+    <div class= escrita> <!--Div para escrita -->
+        <h1> <font color= "#ffffff" size= "40px" face="Segoe UI Black"><center>Quiz Gênio<img src="lampada.png" width="50"></center></font></h1>
+    </div>
+
+    <center>
+    <br>
+    <table border=1 width=" 20%">
+        <td align="justify"> <!--deixar a tabela justificada com o texto-->
+
+        <font> <!--font aberto para deixar o texto em branco devido ao style criado-->
+        <center>
+        <form>
+            <h2>Digite seu nome:</h2>
+            <br>
+            <input type="text" name="nome" onFocus="this.value='nome do usuário'">
+            <br><br><br>
+            <h2>Digite seu sobrenome:</h2>
+            <br>
+            <input type="text" name="sobrenome" onFocus="this.value='sobrenome'">
+            <br>
+            <br>
+            <font size="5"><a href="submit" onclick= "alert('enviado!')"><button class="botao"><h2>Enviar</h2></button></a>
+            <br>
+        </form>
+    </table>
+
+    <div class="rodape">
+        <p> Feito por: Samuel e Vincius 2°D</p>
+    </div>
+
+    <div class="nav">
+        <a href="pag1.html" class="selecionado" > 1 </a> <a href="pag2.html"> 2 </a> <a href="pag3.html"> 3 </a> <a href="pag4.html" > 4 </a> <a href="pag5.html" > 5 </a>
+    </div>
+</body>
+</html>
